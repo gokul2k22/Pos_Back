@@ -20,7 +20,6 @@ distlib==0.3.6
 dj-database-url==2.3.0
 Django==4.2
 psycopg2-binary
-mysqlclient
 gunicorn
 django-cors-headers==4.1.0
 django-crispy-forms==1.14.0
