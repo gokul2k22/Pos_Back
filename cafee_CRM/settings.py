@@ -85,7 +85,7 @@ WSGI_APPLICATION = 'cafee_CRM.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql',#'django.db.backends.mysql',
         'NAME': 'cafe_management',
         'USER': 'root',
         'PASSWORD': 'Gokul@123',
