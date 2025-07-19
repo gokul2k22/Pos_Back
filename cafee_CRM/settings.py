@@ -83,16 +83,42 @@ WSGI_APPLICATION = 'cafee_CRM.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',#'django.db.backends.mysql',
-        'NAME': 'cafe_management',
-        'USER': 'root',
-        'PASSWORD': 'Gokul@123',
-        'HOST': 'localhost',
-        'PORT': '3306',
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',#'django.db.backends.mysql',
+#         'NAME': 'cafee_crm_db',#'cafe_management',
+#         'USER': 'cafee_crm_db_user',#'root',
+#         'PASSWORD': 'SQhiOda4satYJAWf1qm30N8Yp9m80sSI',#'Gokul@123',
+#         'HOST': 'dpg-d1to2s3e5dus73dq1sp0-a.render.com',
+#         'PORT': '5432',
+#     }
+# }
+
+import os
+
+if os.getenv("RENDER"):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.getenv('DB_NAME'),
+            'USER': os.getenv('DB_USER'),
+            'PASSWORD': os.getenv('DB_PASSWORD'),
+            'HOST': os.getenv('DB_HOST'),  # This would be the internal hostname from Render
+            'PORT': os.getenv('DB_PORT'),
+        }
     }
-}
+else:
+    # Local development settings
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'cafe_management',
+            'USER': 'root',
+            'PASSWORD': 'Gokul@123',
+            'HOST': 'localhost',
+            'PORT': '3306',
+        }
+    }
 
 
 
